@@ -12,10 +12,14 @@ public class CatFactory {
 
     public List<Cat> makeCat(){
         List<Cat> cats = new ArrayList<>();
-        Cat cat1 = new Cat();
+        Random rnd = new Random();
         for (int i = 0; i < catNickname.size(); i++) {
+            int age = rnd.nextInt(17) + 1;
+            int mood = rnd.nextInt(81) + 20;
+            int satiety = rnd.nextInt(81) + 20;
+            int average = (age + mood + satiety) / 3;
             String name = catNickname.get(i);
-            cats.add(new Cat(name, cat1.getAge(), cat1.getHealth(), cat1.getMood(), cat1.getSatiety(), cat1.getAverage()));
+            cats.add(new Cat(name, age, mood, satiety, average));
         }
         return cats;
     }
