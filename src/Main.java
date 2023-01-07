@@ -1,13 +1,9 @@
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
-        Random rnd = new Random();
+        start();
+    }
+    public static void start(){
         CatFactory catFactory = new CatFactory();
-        catFactory.print();
         catFactory.chooseYourAction();
-        catFactory.addNewCat();
-        catFactory.print();
-
     }
 }

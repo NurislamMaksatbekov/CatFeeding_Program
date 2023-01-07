@@ -61,15 +61,4 @@ public class Cat {
     public void setAverage(int average) {
         this.average = average;
     }
-
-    @Override
-    public String toString() {
-        return "Cat{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", health=" + health +
-                ", mood=" + mood +
-                ", satiety=" + satiety +
-                '}';
-    }
 }
