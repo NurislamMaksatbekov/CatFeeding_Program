@@ -70,6 +70,7 @@ public class ActionWithCat implements Actionable{
                     "CHOOSE ANOTHER ONE!");
         }
     }
+
     @Override
     public void nextDay(List<Cat> cat) {
         Random rnd = new Random();
