@@ -4,53 +4,69 @@ import java.util.Random;
 public class ActionWithCat implements Actionable{
     @Override
     public void feedCat(Cat cat) {
-        if(cat.getAge() <= 5){
-            cat.setSatiety(cat.getSatiety() + 7);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-        }else if(cat.getAge() >= 6 && cat.getAge() < 10){
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-            cat.setSatiety(cat.getSatiety() + 5);
+        if(cat.isAvailable()){
+            cat.setAvailable(!cat.isAvailable());
+            if(cat.getAge() <= 5){
+                cat.setSatiety(cat.getSatiety() + 7);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }else if(cat.getAge() >= 6 && cat.getAge() < 10){
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+                cat.setSatiety(cat.getSatiety() + 5);
+            }else {
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+                cat.setSatiety(cat.getSatiety() + 4);
+            }
         }else {
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-            cat.setSatiety(cat.getSatiety() + 4);
+            System.out.println("You cant use this cat");
         }
     }
     @Override
     public void playWithCat(Cat cat) {
-        if(cat.getAge() <= 5){
-            cat.setHealth(cat.getHealth() + 7);
-            cat.setMood(cat.getMood() + 7);
-            cat.setSatiety(cat.getSatiety() - 3);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-        }else if(cat.getAge() >= 6 && cat.getAge() < 10){
-            cat.setSatiety(cat.getSatiety() - 5);
-            cat.setHealth(cat.getHealth() + 5);
-            cat.setMood(cat.getMood() + 5);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-        }else {
-            cat.setHealth(cat.getHealth() + 4);
-            cat.setMood(cat.getMood() + 4);
-            cat.setSatiety(cat.getSatiety() - 6);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+        if(cat.isAvailable()){
+            cat.setAvailable(!cat.isAvailable());
+            if(cat.getAge() <= 5){
+                cat.setHealth(cat.getHealth() + 7);
+                cat.setMood(cat.getMood() + 7);
+                cat.setSatiety(cat.getSatiety() - 3);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }else if(cat.getAge() >= 6 && cat.getAge() < 10){
+                cat.setSatiety(cat.getSatiety() - 5);
+                cat.setHealth(cat.getHealth() + 5);
+                cat.setMood(cat.getMood() + 5);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }else {
+                cat.setHealth(cat.getHealth() + 4);
+                cat.setMood(cat.getMood() + 4);
+                cat.setSatiety(cat.getSatiety() - 6);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }
+        } else {
+            System.out.println("You cant use this cat");
         }
+
     }
     @Override
     public void treatCt(Cat cat) {
-        if(cat.getAge() <= 5){
-            cat.setHealth(cat.getHealth() + 7);
-            cat.setMood(cat.getMood() - 3);
-            cat.setSatiety(cat.getSatiety() - 3);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-        }else if(cat.getAge() >= 6 && cat.getAge() < 10){
-            cat.setSatiety(cat.getSatiety() - 5);
-            cat.setHealth(cat.getHealth() + 5);
-            cat.setMood(cat.getMood() - 5);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
-        }else {
-            cat.setHealth(cat.getHealth() + 4);
-            cat.setMood(cat.getMood() - 5);
-            cat.setSatiety(cat.getSatiety() - 6);
-            cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+        if(cat.isAvailable()){
+            cat.setAvailable(!cat.isAvailable());
+            if(cat.getAge() <= 5){
+                cat.setHealth(cat.getHealth() + 7);
+                cat.setMood(cat.getMood() - 3);
+                cat.setSatiety(cat.getSatiety() - 3);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }else if(cat.getAge() >= 6 && cat.getAge() < 10){
+                cat.setSatiety(cat.getSatiety() - 5);
+                cat.setHealth(cat.getHealth() + 5);
+                cat.setMood(cat.getMood() - 5);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }else {
+                cat.setHealth(cat.getHealth() + 4);
+                cat.setMood(cat.getMood() - 5);
+                cat.setSatiety(cat.getSatiety() - 6);
+                cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
+            }
+        } else {
+            System.out.println("You cant use this cat");
         }
     }
     @Override
@@ -64,8 +80,7 @@ public class ActionWithCat implements Actionable{
             cats.setMood(cats.getMood() - mood);
             cats.setSatiety(cats.getSatiety() - satiety);
             cats.setAverage((cats.getHealth() + cats.getMood() + cats.getSatiety()) / 3);
-
+                cats.setAvailable(true);
         }
-
     }
 }

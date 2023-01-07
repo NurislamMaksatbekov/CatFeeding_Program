@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Cat {
     private String name;
     private int age;
@@ -7,6 +5,7 @@ public class Cat {
     private int mood;
     private int satiety;
     private int average;
+    private boolean available;
 
     public Cat(String name, int age, int health, int mood, int satiety, int average) {
         this.name = name;
@@ -15,8 +14,11 @@ public class Cat {
         this.mood = mood;
         this.satiety = satiety;
         this.average = average;
+        this.available = true;
     }
 
+    public Cat() {
+    }
 
     public String getName() {
         return name;
@@ -38,10 +40,6 @@ public class Cat {
         return satiety;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setHealth(int health) {
         this.health = health;
     }
@@ -60,5 +58,17 @@ public class Cat {
 
     public void setAverage(int average) {
         this.average = average;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

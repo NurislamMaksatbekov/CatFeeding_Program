@@ -6,10 +6,11 @@ public class CatFactory {
     private static final Scanner SC = new Scanner(System.in);
     private static final Random RND = new Random();
     private ActionWithCat actionWithCat = new ActionWithCat();
-
+    private Cat cats = new Cat();
     public CatFactory() {
         this.cat = makeCat();
     }
+
     public List<Cat> makeCat(){
         List<Cat> cats = new ArrayList<>();
         for (int i = 0; i < catNickname.size(); i++) {
@@ -24,14 +25,6 @@ public class CatFactory {
         cats.sort((s1, s2) -> s2.getAverage() - s1.getAverage());
         return cats;
     }
-    public void print() {
-        System.out.println("| # |      Name      |     Age     |     Health     |     Mood     |     Satiety     |     Average     |\n" +
-                           "+---+----------------+-------------+----------------+--------------+-----------------+-----------------+");
-        for (int i = 0; i < cat.size(); i++) {
-            System.out.printf("| %s |  %-13s |  %-10s |  %-13s |  %-11s |  %-14s |  %-14s |\n", i+1, getCat().get(i).getName(), getCat().get(i).getAge(), getCat().get(i).getHealth(),
-                    getCat().get(i).getMood(), getCat().get(i).getSatiety(), getCat().get(i).getAverage());
-        }
-    }
     public void addNewCat(){
         int health = RND.nextInt(81) + 20;
         int mood = RND.nextInt(81) + 20;
@@ -43,6 +36,7 @@ public class CatFactory {
         int age = getAge();
         cat.add(new Cat(nickname, age, health, mood, satiety, average));
     }
+
     public int getAge(){
         int age = SC.nextInt();
         try {
@@ -103,10 +97,21 @@ public class CatFactory {
         }
         return cat.get(chooseCat-1);
     }
+
+    public void print() {
+        System.out.println("| # |      Name      |     Age     |     Health     |     Mood     |     Satiety     |     Average     |\n" +
+                "+---+----------------+-------------+----------------+--------------+-----------------+-----------------+");
+        for (int i = 0; i < cat.size(); i++) {
+            System.out.printf("| %s |  %-13s |  %-10s |  %-13s |  %-11s |  %-14s |  %-14s |\n", i+1, getCat().get(i).getName(), getCat().get(i).getAge(), getCat().get(i).getHealth(),
+                    getCat().get(i).getMood(), getCat().get(i).getSatiety(), getCat().get(i).getAverage());
+        }
+    }
+
     public void printException(){
         System.out.println("Enter correct data!\n" +
                 "Try again!");
     }
+
     public List<Cat> getCat() {
         return cat;
     }
