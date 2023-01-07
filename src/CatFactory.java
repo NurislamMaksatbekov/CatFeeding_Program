@@ -5,6 +5,7 @@ public class CatFactory {
     private List<String> catNickname = new ArrayList<>(List.of("Jasper", "Tom", "Jerry"));
     private static final Scanner SC = new Scanner(System.in);
     private static final Random RND = new Random();
+    private ActionWithCat actionWithCat = new ActionWithCat();
 
     public CatFactory() {
         this.cat = makeCat();
@@ -53,10 +54,55 @@ public class CatFactory {
                 throw new InputMismatchException();
             }
         }catch (InputMismatchException e ){
-            System.out.println("Enter Correct data!");
+            printException();
             getAge();
         }
         return age;
+    }
+    public void chooseYourAction(){
+        System.out.println("What do you want to do with cat?\n" +
+                "(1) Feed your cat\n" +
+                "(2) Play with cat\n" +
+                "(3) Treat cat");
+        int choose = SC.nextInt();
+        try {
+            switch (choose) {
+                case 1:
+                    actionWithCat.feedCat(chooseCat());
+                    break;
+                case 2:
+                    actionWithCat.playWithCat(chooseCat());
+                    break;
+                case 3:
+                    actionWithCat.treatCt(chooseCat());
+                    break;
+            }
+                if (choose <= 0 || choose > 3) {
+                    throw new NumberFormatException();
+            }
+        }catch (NumberFormatException | InputMismatchException e){
+            printException();
+            chooseYourAction();
+        }
+    }
+
+    public Cat chooseCat(){
+        System.out.println("Choose cat");
+        int chooseCat = SC.nextInt();
+        try {
+            System.out.println("You chose: " + catNickname.get(chooseCat));
+            if(chooseCat > cat.size()){
+                throw new InputMismatchException();
+            }
+        }catch (InputMismatchException | IndexOutOfBoundsException e){
+            printException();
+            chooseCat();
+        }
+        return cat.get(chooseCat);
+    }
+    public void printException(){
+        System.out.println("Enter correct data!\n" +
+                "Try again!");
     }
 
     public List<Cat> getCat() {

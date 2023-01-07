@@ -1,5 +1,7 @@
 public interface Actionable {
-    void feedCat();
-    void playWithCat();
-    void treatCt();
+
+    void feedCat(Cat cat);
+
+    void playWithCat(Cat cat);
+    void treatCt(Cat cat);
 }
