@@ -17,8 +17,8 @@ public class ActionWithCat implements Actionable{
                 cat.setSatiety(cat.getSatiety() + 4);
             }
         }else {
-            System.out.println("You cant use this cat");
-        }
+            System.out.println("YOU CAN'T USE THIS CAT!\n" +
+                    "CHOOSE ANOTHER ONE!");        }
     }
     @Override
     public void playWithCat(Cat cat) {
@@ -41,8 +41,8 @@ public class ActionWithCat implements Actionable{
                 cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
             }
         } else {
-            System.out.println("You cant use this cat");
-        }
+            System.out.println("YOU CAN'T USE THIS CAT!\n" +
+                    "CHOOSE ANOTHER ONE!");        }
 
     }
     @Override
@@ -66,7 +66,8 @@ public class ActionWithCat implements Actionable{
                 cat.setAverage((cat.getHealth() + cat.getMood() + cat.getSatiety()) / 3);
             }
         } else {
-            System.out.println("You cant use this cat");
+            System.out.println("YOU CAN'T USE THIS CAT!\n" +
+                    "CHOOSE ANOTHER ONE!");
         }
     }
     @Override
