@@ -6,5 +6,5 @@ public interface Actionable {
 
     void playWithCat(Cat cat);
     void treatCt(Cat cat);
-    void nextDay(Cat cat);
+    void nextDay(List<Cat> cat);
 }

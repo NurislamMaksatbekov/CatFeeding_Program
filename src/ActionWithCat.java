@@ -48,13 +48,16 @@ public class ActionWithCat implements Actionable{
     }
 
     @Override
-    public void nextDay(Cat cat) {
+    public void nextDay(List<Cat> cat) {
         Random rnd = new Random();
         int health = rnd.nextInt(7) - 3;
         int mood = rnd.nextInt(7) - 3;
         int satiety = rnd.nextInt(7) - 3;
-        cat.setHealth(cat.getHealth() - health);
-        cat.setMood(cat.getMood() - mood);
-        cat.setSatiety(cat.getSatiety() - satiety);
+        for (Cat cats :cat) {
+            cats.setHealth(cats.getHealth() - health);
+            cats.setMood(cats.getMood() - mood);
+            cats.setSatiety(cats.getSatiety() - satiety);
+        }
+
     }
 }

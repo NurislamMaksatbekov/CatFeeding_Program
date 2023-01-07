@@ -63,7 +63,9 @@ public class CatFactory {
         System.out.println("What do you want to do with cat?\n" +
                 "(1) Feed your cat\n" +
                 "(2) Play with cat\n" +
-                "(3) Treat cat");
+                "(3) Treat cat\n" +
+                "(4) Add new cat\n" +
+                "(5) Next Day");
         int choose = SC.nextInt();
         try {
             switch (choose) {
@@ -76,6 +78,11 @@ public class CatFactory {
                 case 3:
                     actionWithCat.treatCt(chooseCat());
                     break;
+                case 4:
+                    addNewCat();
+                    break;
+                case 5:
+                    actionWithCat.nextDay(cat);
             }
                 if (choose <= 0 || choose > 3) {
                     throw new NumberFormatException();
