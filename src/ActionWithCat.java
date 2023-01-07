@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Random;
+
 public class ActionWithCat implements Actionable{
     @Override
     public void feedCat(Cat cat) {
@@ -42,5 +45,16 @@ public class ActionWithCat implements Actionable{
             cat.setMood(cat.getMood() - 5);
             cat.setSatiety(cat.getSatiety() - 6);
         }
+    }
+
+    @Override
+    public void nextDay(Cat cat) {
+        Random rnd = new Random();
+        int health = rnd.nextInt(7) - 3;
+        int mood = rnd.nextInt(7) - 3;
+        int satiety = rnd.nextInt(7) - 3;
+        cat.setHealth(cat.getHealth() - health);
+        cat.setMood(cat.getMood() - mood);
+        cat.setSatiety(cat.getSatiety() - satiety);
     }
 }
