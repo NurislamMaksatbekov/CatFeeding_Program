@@ -8,14 +8,15 @@ public class Cat {
     private int satiety;
     private int average;
 
-    public Cat(String name, int age, int health, int mood, int satiety) {
+    public Cat(String name, int age, int health, int mood, int satiety, int average) {
         this.name = name;
-        this.age = new Random().nextInt(17) +1;
-        this.health = new Random().nextInt(81) + 20;
-        this.mood = new Random().nextInt(81) + 20;
-        this.satiety = new Random().nextInt(81) + 20;
-        this.average = (health + mood + satiety) / 3;
+        this.age = age;
+        this.health = health;
+        this.mood = mood;
+        this.satiety = satiety;
+        this.average = average;
     }
+
 
     public String getName() {
         return name;

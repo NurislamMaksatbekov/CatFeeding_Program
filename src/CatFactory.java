@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class CatFactory {
     private List<Cat> cat;
@@ -20,7 +19,7 @@ public class CatFactory {
             int satiety = RND.nextInt(81) + 20;
             int average = (health + mood + satiety) / 3;
             String name = catNickname.get(i);
-            cats.add(new Cat(name, age, mood, satiety, average));
+            cats.add(new Cat(name, age, health, mood, satiety, average));
         }
         cats.sort((s1, s2) -> s2.getAverage() - s1.getAverage());
         return cats;
@@ -32,7 +31,6 @@ public class CatFactory {
             System.out.printf("| %s |  %-13s |  %-10s |  %-13s |  %-11s |  %-14s |  %-14s |\n", i, getCat().get(i).getName(), getCat().get(i).getAge(), getCat().get(i).getHealth(),
                     getCat().get(i).getMood(), getCat().get(i).getSatiety(), getCat().get(i).getAverage());
         }
-        addNewCat();
     }
 
     public void addNewCat(){
@@ -41,26 +39,25 @@ public class CatFactory {
         int mood = RND.nextInt(81) + 20;
         int satiety = RND.nextInt(81) + 20;
         int average = ( health + mood + satiety) / 3;
-        System.out.println("Enter new cat's name: x");
+        System.out.println("Enter new cat's name: ");
         nickname = SC.nextLine();
-        getAge();
-
+        System.out.println("Enter cat's age (1-18)");
+        int age = getAge();
+        cat.add(new Cat(nickname, age, health, mood, satiety, average));
     }
-    public void getAge(){
-        int age;
+    public int getAge(){
+        int age = 0;
         try {
-            System.out.println("Enter cat's age (1-18)");
-            age = SC.nextInt(17) + 1;
-            if(age <= 0 || age >18){
+            age = SC.nextInt();
+            if(age <= 0 || age > 18){
                 throw new InputMismatchException();
             }
         }catch (InputMismatchException e ){
             System.out.println("Enter Correct data!");
             getAge();
         }
+        return age;
     }
-
-
 
     public List<Cat> getCat() {
         return cat;
