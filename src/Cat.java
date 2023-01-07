@@ -67,8 +67,4 @@ public class Cat {
     public void setAvailable(boolean available) {
         this.available = available;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
